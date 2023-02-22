@@ -5,7 +5,6 @@ data = np.array([0.496171, 5.26533, 0.931403, 3.31149, 3.41641, 1.55618, 2.04802
 
 print(len(data))
 
-alpha = 0.0104208
 
 def firstMoment():
     sum = np.sum(data)
@@ -61,3 +60,14 @@ print(f"beta1 of data is: {beta1}")
 
 beta2 = beta2Pearson()
 print(f"beta2 of data is: {beta2}")
+
+# Pearson classfication
+def pearsonClassification():
+    sample_skew = np.sum((data - firstMoment())**3) / ((len(data) - 1) * firstMoment()**(3/2))
+    sample_kurt = np.sum((data - firstMoment())**4) / ((len(data) - 1) * firstMoment()**2) - 3
+
+    return sample_skew**2 / sample_kurt
+
+
+pearsonClass = pearsonClassification()
+print(f"pearson classification of data is: {pearsonClass}")
